@@ -1,0 +1,16 @@
+name: Weekly Sync
+on:
+  schedule:
+    - cron: '0 22 * * 0'  # Midnight Paris time (22:00 UTC)
+  workflow_dispatch:       # Manual trigger option
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tgymnich/fork-sync@v2.0
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          owner: n8n-io
+          base: master
+          head: master
